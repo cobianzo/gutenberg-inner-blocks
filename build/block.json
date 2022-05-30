@@ -10,6 +10,12 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"numberOfSlides": {
+			"type": "number",
+			"default": 0
+		}
+	},
 	"textdomain": "my-inner",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
