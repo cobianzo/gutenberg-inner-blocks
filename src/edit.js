@@ -1,13 +1,19 @@
 import { __ } from '@wordpress/i18n';
 
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 import './editor.scss';
 
+const ALLOWED_BLOCKS = [ 'cobianzo/slide' ]; // [ 'core/image' ];
+
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'My Inner – hello from the editor!', 'my-inner' ) }
-		</p>
+		<section { ...useBlockProps() }>
+			<InnerBlocks
+				allowedBlocks={ ALLOWED_BLOCKS }
+				orientation="horizontal"
+				template={ [ ALLOWED_BLOCKS ] }
+			/>
+		</section>
 	);
 }

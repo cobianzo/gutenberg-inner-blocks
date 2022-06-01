@@ -1,12 +1,7 @@
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 
-let defaultEntry = defaultConfig.entry;
-
-console.log( 'mierda entry', defaultEntry );
-// defaultEntry = {
-// 	theblock: './src',
-// };
-// defaultEntry.add( { frontend: './src/frontend.js' } );
+// console.log( 'coco entry', defaultEntry );
+// This method doesnt watch frontend.js nor frontend.scss; we need to build after any change
 module.exports = {
 	...defaultConfig,
 	entry: {

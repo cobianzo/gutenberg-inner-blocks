@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/my-inner",
+	"name": "cobianzo/my-inner",
 	"version": "0.1.0",
-	"title": "My Inner",
+	"title": "Slider with Slides",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block written with ESNext standard and JSX support – build step required.",

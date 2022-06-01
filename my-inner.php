@@ -8,9 +8,9 @@
  * Author:            The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       my-inner
+ * Text Domain:       aaa
  *
- * @package           create-block
+ * @package           cobianzo
  */
 
 /** Register the block in PHP */
@@ -41,7 +41,7 @@ add_action( 'enqueue_block_assets', 'myplugin_enqueue_if_block_is_present' );  /
 // add_action( 'wp_enqueue_scripts', 'myplugin_enqueue_if_block_is_present' ); // Can be loaded in the both in head and footer
 function myplugin_enqueue_if_block_is_present(){
 
-    if ( has_block( 'create-block/my-inner' ) ) {			
+    if ( has_block( 'cobianzo/my-inner' ) ) {			
         wp_enqueue_script(
             'my-inner-js-slider',
             plugin_dir_url( __FILE__ ) . '/build/frontend.js',
@@ -52,7 +52,8 @@ function myplugin_enqueue_if_block_is_present(){
 
 				wp_enqueue_style( 
 						'my-inner-css-slider', 
-						plugin_dir_url( __FILE__ ) . '/node_modules/@splidejs/splide/dist/css/splide.min.css',
+						//plugin_dir_url( __FILE__ ) . '/node_modules/@splidejs/splide/dist/css/splide.min.css',
+						plugin_dir_url( __FILE__ ) . '/build/frontend.css',
 						[], 
 						1 
 				);

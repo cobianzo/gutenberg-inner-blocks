@@ -3,9 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save() {
-	return (
-		<p { ...useBlockProps.save() }>
-			{ __( 'My Inner – hello from the saved content!', 'my-inner' ) }
-		</p>
-	);
+	const blockProps = useBlockProps.save();
+
+	return <div { ...blockProps }> { __( 'Your block', 'aaa' ) } . </div>;
 }
