@@ -3,7 +3,8 @@ import Splide from '@splidejs/splide';
 // this doesnt include it, but makes it that webpack generates build/frontend.css - use 'npm run build'
 import './frontend.scss';
 
-console.log( Splide );
-alert( 'frontend' );
+console.log( 'splide librery loaded', Splide );
 
-new Splide( '.splide' ).mount();
+if ( document.querySelector( '.splide' ) ) {
+	new Splide( '.splide' ).mount();
+}

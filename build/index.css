@@ -1,7 +1,108 @@
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/slide/editor.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************/
+.slide {
+  border: 1px dotted rgb(214, 197, 164);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 3fr 1fr;
+      grid-template: "main" 3fr "content" 1fr;
+  place-items: center;
+  place-content: center;
+  max-height: 300px;
+  background-color: rgb(226, 226, 226);
+}
+.slide__image-button {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: main;
+  background-color: var(--wp--preset--color--light-green-cyan);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+.slide_delete-img-btn {
+  width: 50px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.slide_delete-img-btn path {
+  fill: #b90606;
+}
+.not-selected .slide_delete-img-btn {
+  display: none;
+}
+.slide picture {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: content;
+  border: 1px dotted rgb(135, 94, 94);
+}
+.slide__img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.slide__content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: content;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -ms-grid-row-align: end;
+      align-self: end;
+  background-color: rgba(255, 255, 255, 0.45);
+  padding: 1rem;
+  text-align: center;
+}
+.has-img .slide > .slide__content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.slide__content h4 {
+  border: 1px dotted rgb(80, 80, 97);
+  margin: 0;
+}
+.slide__content p {
+  border: 1px dotted rgb(196, 131, 196);
+}
+.has-img .slide {
+  -ms-grid-rows: 4fr;
+      grid-template: "content" 4fr;
+}
 
+/* top level classes */
+.slide-parent.not-selected {
+  opacity: 0.5;
+}
+.slide-parent.is-selected {
+  opacity: 1;
+  border: 5px solid rgb(187, 143, 62);
+  -webkit-animation: border-animation 5s infinite;
+          animation: border-animation 5s infinite;
+}
+.slide-parent .preview-isolated {
+  border: 15px solid rgb(187, 143, 62);
+}
+
+/* animayion border when slide is sleected */
+@-webkit-keyframes border-animation {
+  from {
+    border-color: rgb(242, 7, 7);
+  }
+  to {
+    border-color: rgb(6, 6, 240);
+  }
+}
+@keyframes border-animation {
+  from {
+    border-color: rgb(242, 7, 7);
+  }
+  to {
+    border-color: rgb(6, 6, 240);
+  }
+}
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/editor.scss ***!
   \****************************************************************************************************************************************************************************************************************************************/
@@ -10,8 +111,42 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-create-block-my-inner {
+.wp-block-cobianzo-my-inner .block-editor-inner-blocks .block-editor-block-list__layout {
   border: 1px dotted #f00;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 300px;
+}
+.wp-block-cobianzo-my-inner .block-editor-inner-blocks .block-editor-block-list__layout div[data-type="cobianzo/slide"] {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 50%;
+}
+.wp-block-cobianzo-my-inner .block-editor-inner-blocks .block-editor-block-list__layout div[data-type="cobianzo/slide"] > section, .wp-block-cobianzo-my-inner .block-editor-inner-blocks .block-editor-block-list__layout div[data-type="cobianzo/slide"] .slide, .wp-block-cobianzo-my-inner .block-editor-inner-blocks .block-editor-block-list__layout div[data-type="cobianzo/slide"] picture {
+  height: 100%;
+}
+
+.selected-inner-slide {
+  border: 10px solid rgb(187, 143, 62);
+}
+
+.not-selected-inner-slide {
+  border: 10px solid rgb(229, 229, 229);
+}
+
+.wp-block-cobianzo-my-inner.preview-mode .block-editor-inner-blocks .block-editor-block-list__layout div[data-type="cobianzo/slide"] {
+  flex-basis: 100%;
+}
+.wp-block-cobianzo-my-inner.preview-mode .block-editor-block-list__block.slide-parent {
+  display: none;
+}
+.wp-block-cobianzo-my-inner.preview-mode .block-editor-block-list__block.slide-parent.preview-isolated {
+  display: flex;
+  opacity: 1;
+}
+.wp-block-cobianzo-my-inner.preview-mode .block-editor-block-list__block.slide-parent.preview-isolated .slide picture {
+  max-height: 100%;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=index.css.map*/

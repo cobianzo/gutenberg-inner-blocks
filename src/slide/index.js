@@ -1,18 +1,23 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
+import IconSlide from './small-chunks/IconSlide';
+
 import Edit from './edit';
-import Save from './save';
+import save from './save';
 
 registerBlockType( 'cobianzo/slide', {
 	title: __( 'Single Slide', 'aaa' ),
 	description: __( 'A team member item', 'aaa' ),
-	icon: 'admin-users',
-	parent: [ 'cobianzo/my-inner' ],
+	icon: IconSlide,
+	// parent: [ 'cobianzo/my-inner' ],
 	supports: {
 		reusable: false,
 		html: false,
 	},
 	attributes: {
+		imgId: {
+			type: 'number',
+		},
 		title: {
 			type: 'string',
 			source: 'html',
@@ -37,6 +42,7 @@ registerBlockType( 'cobianzo/slide', {
 			attribute: 'src',
 		},
 	},
+	usesContext: [ 'cobianzo/currentSlide' ],
 	edit: Edit,
-	save: Save,
+	save,
 } );

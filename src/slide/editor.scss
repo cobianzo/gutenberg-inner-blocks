@@ -1,0 +1,97 @@
+
+.slide {
+	border: 1px dotted rgb(214, 197, 164);
+	display: grid;
+	grid-template: "main" 3fr "content" 1fr;
+	place-items: center;
+	place-content: center;
+	max-height: 300px;
+	background-color: rgb(226, 226, 226);
+
+	&__image-button {
+		grid-area: main;
+		background-color: var(--wp--preset--color--light-green-cyan);
+		border: 1px solid rgba(#000, 0.3);
+		box-shadow: 3px 3px 3px rgba(#000, 0.3);
+	}
+
+	&_delete-img-btn {
+		width: 50px;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+
+		path {
+			fill: #b90606;
+		}
+
+		.not-selected & {
+			display: none;
+		}
+	}
+
+	picture {
+		grid-area: content;
+		border: 1px dotted rgb(135, 94, 94);
+	}
+
+	&__img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
+	}
+
+	&__content {
+		grid-area: content;
+		justify-self: stretch; // take all width
+		align-self: end; // bottom
+		background-color: rgba(255, 255, 255, 0.45);
+		padding: 1rem;
+		text-align: center;
+
+		h4 {
+			border: 1px dotted rgb(80, 80, 97);
+			margin: 0;
+		}
+
+		p {
+			border: 1px dotted rgb(196, 131, 196);
+		}
+	}
+
+	.has-img & {
+		grid-template: "content" 4fr;
+	}
+
+}
+
+/* top level classes */
+.slide-parent {
+
+	&.not-selected {
+		opacity: 0.5;
+	}
+
+	&.is-selected {
+		opacity: 1;
+		border: 5px solid rgb(187, 143, 62);
+		animation: border-animation 5s infinite;
+	}
+
+	.preview-isolated {
+		border: 15px solid rgb(187, 143, 62);
+	}
+}
+
+
+/* animayion border when slide is sleected */
+@keyframes border-animation {
+
+	from {
+		border-color: rgb(242, 7, 7);
+	}
+
+	to {
+		border-color: rgb(6, 6, 240);
+	}
+}

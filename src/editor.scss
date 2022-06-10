@@ -4,6 +4,61 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-my-inner {
-	border: 1px dotted #f00;
+.wp-block-cobianzo-my-inner {
+
+	.block-editor-inner-blocks {
+
+		.block-editor-block-list__layout {
+			border: 1px dotted #f00;
+			display: flex;
+			flex-wrap: wrap;
+			min-height: 300px;
+			// grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			// grid-gap: 1rem;
+
+			div[data-type="cobianzo/slide"] {
+				flex-grow: 0;
+				flex-shrink: 1;
+				flex-basis: 50%;
+
+				> section, .slide, picture {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+.selected-inner-slide {
+	border: 10px solid rgb(187, 143, 62);
+}
+
+.not-selected-inner-slide {
+	border: 10px solid rgb(229, 229, 229);
+}
+
+.wp-block-cobianzo-my-inner.preview-mode { 
+
+	// stylelint-disable-next-line
+	.block-editor-inner-blocks .block-editor-block-list__layout div[data-type="cobianzo/slide"] {
+		flex-basis: 100%;
+	}
+
+	.block-editor-block-list {
+
+		&__block.slide-parent {
+			display: none;
+
+			&.preview-isolated {
+				display: flex;
+				opacity: 1;
+
+				.slide picture {
+					max-height: 100%;
+					overflow: hidden;
+				}
+			}
+		}
+	}
 }

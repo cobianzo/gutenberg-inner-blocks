@@ -11,10 +11,13 @@
 		"html": false
 	},
 	"attributes": {
-		"numberOfSlides": {
+		"currentSlide": {
 			"type": "number",
-			"default": 0
+			"default": -1
 		}
+	},
+	"providesContext": {
+		"cobianzo/currentSlide": "currentSlide"
 	},
 	"textdomain": "my-inner",
 	"editorScript": "file:./index.js",

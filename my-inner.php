@@ -22,7 +22,7 @@ function create_block_my_inner_block_init() {
 }
 
 /** PHP server side render on frontend - view.php */
-function render_block_php($attributes) {
+function render_block_php($attributes, $content) {
 	
 	ob_start();
 
