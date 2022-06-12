@@ -1,4 +1,3 @@
-
 .slide {
 	border: 1px dotted rgb(214, 197, 164);
 	display: grid;
@@ -52,10 +51,15 @@
 		h4 {
 			border: 1px dotted rgb(80, 80, 97);
 			margin: 0;
+			font-size: 1.5rem !important;
+			text-transform: uppercase;
+			font-weight: 600 !important;
 		}
 
 		p {
 			border: 1px dotted rgb(196, 131, 196);
+			font-size: 1rem !important;
+			margin: 0 auto;
 		}
 	}
 
@@ -82,7 +86,6 @@
 		border: 15px solid rgb(187, 143, 62);
 	}
 }
-
 
 /* animayion border when slide is sleected */
 @keyframes border-animation {

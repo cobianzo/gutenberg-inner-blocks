@@ -63,9 +63,14 @@
 .slide__content h4 {
   border: 1px dotted rgb(80, 80, 97);
   margin: 0;
+  font-size: 1.5rem !important;
+  text-transform: uppercase;
+  font-weight: 600 !important;
 }
 .slide__content p {
   border: 1px dotted rgb(196, 131, 196);
+  font-size: 1rem !important;
+  margin: 0 auto;
 }
 .has-img .slide {
   -ms-grid-rows: 4fr;
