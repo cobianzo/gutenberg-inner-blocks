@@ -1,10 +1,12 @@
 <!-- <pre> DATOS: <?php print_r($attributes); ?></pre>
 <pre> content: <?php print_r( esc_html( $content ) ); ?></pre> -->
 <?php 
-
+// echo "IS DEBUG? : " . (WP_DEBUG? "SI" : "NO");
 // parsing content to display it as slides.
 // <div class="wp-block-cobianzo-my-inner">
+// replacements from my inner block.
 $content = str_replace('<ul class="wp-block-cobianzo-my-inner', '<ul class="splide__list wp-block-cobianzo-my-inner', $content);
+// replacements for slide block.
 $content = str_replace('<hr class="container-start hidden"/>', '<li class="splide__slide">', $content);
 $content = str_replace('<hr class="container-end hidden"/>', '</li>', $content);
 ?>

@@ -59,3 +59,6 @@ function myplugin_enqueue_if_block_is_present(){
 				);
     }
 }
+
+// for only backend assets:
+	// action 'enqueue_block_editor_assets'

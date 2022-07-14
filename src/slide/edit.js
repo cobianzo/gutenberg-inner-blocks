@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { instructions } from './small-chunks/instructions';
 import IconDelete from './small-chunks/IconDelete';
-import { useSelect, useDispatch } from '@wordpress/data';
+import { select, useSelect, useDispatch } from '@wordpress/data';
 
 // import IconPlay from './small-chunks/IconPlay';
 import {
@@ -37,17 +37,33 @@ export default function Edit( props ) {
 	const imgId = attributes.imgId;
 	// const [ previewMode, setPreviewMode ] = useState( false );
 
-	const wpImgSizes = useSelect(
-		( select ) => select( 'core/block-editor' ).getSettings().imageSizes
-	);
-	const getCurrentImgSizes = () => {
-		if ( ! attributes.imgId ) return [];
-		// get all sizes for this img
-		const imgInfo = useSelect( ( select ) =>
-			select( 'core' ).getMedia( attributes.imgId )
+	const blockProps = useBlockProps();
+
+	const { wpImgSizes, indexBlock } = useSelect( ( select ) => {
+		const blockEditorSelect = select( 'core/block-editor' );
+		const indexAsInnerBlock = blockEditorSelect.getBlockIndex(
+			blockProps[ 'data-block' ]
 		);
-		console.log( 'current img sizes;, ;,', imgInfo );
-		if ( ! imgInfo ) return [];
+
+		return {
+			wpImgSizes: blockEditorSelect.getSettings().imageSizes,
+			indexBlock: indexAsInnerBlock,
+		};
+	}, [] );
+	console.log( 'indexxx', indexBlock );
+	console.log( 'IMG sizes', wpImgSizes );
+
+	const getCurrentImgSizes = () => {
+		if ( ! attributes.imgId ) return null;
+		// get all sizes for this img
+
+		const imgInfo = select( 'core' ).getMedia( attributes.imgId );
+		console.log(
+			'%cTODELETE  current img sizes;, ;,',
+			'color:orange',
+			imgInfo
+		);
+		if ( ! imgInfo ) return [ { label: 'No sizes', value: null } ];
 		const returnValidOptions = [];
 		//console.log( imgInfo[media_details] );
 		for ( const sizeSlugKey in imgInfo.media_details.sizes ) {
@@ -65,27 +81,29 @@ export default function Edit( props ) {
 		return returnValidOptions;
 	};
 
-	console.log( 'IMG sizes', wpImgSizes );
 	// watch isSelected
-	useEffect( () => {
-		if ( isSelected ) {
-			console.log( 'Slide Selected', props );
-			window.lastSlideSelected = props.clientId; // to communicate with the parent block.
-			// props.context[ 'cobianzo/currentSlide' ] = props.clientId; // this doesnt work in the parent
-		}
-		return () => console.log( 'Slide de-selected', props.clientId );
-	}, [ isSelected ] );
+	// useEffect( () => {
+	// 	if ( isSelected ) {
+	// 		console.log( 'Slide Selected', props );
+	// 		window.lastSlideSelected = props.clientId; // to communicate with the parent block.
+	// 		// props.context[ 'cobianzo/currentSlide' ] = props.clientId; // this doesnt work in the parent
+	// 	}
+	// 	return () => console.log( 'Slide de-selected', props.clientId );
+	// }, [ isSelected ] );
 
 	// testing things
 	const innerBlockProps = useInnerBlocksProps();
 	console.log( 'slide Blockprops:', useBlockProps() );
 	console.log( 'slide innerblockprops:', innerBlockProps );
+
 	return (
 		<section
+			data-indexinner={ indexBlock }
 			{ ...useBlockProps( {
 				className: `slide-parent ${
 					attributes.url ? 'has-img' : 'no-img'
-				} ${ ! isSelected && 'not-selected' }`,
+				} ${ ! isSelected && 'not-selected' }
+        `,
 			} ) }
 		>
 			<BlockControls
@@ -139,7 +157,7 @@ export default function Edit( props ) {
 							title={ __( 'Background image', 'aaa' ) }
 							onSelect={ ( media ) => {
 								const { url, alt, id: imgId } = media;
-								console.log( 'media: ', media, url );
+								console.log( 'media: ' + imgId, media, url );
 								setAttributes( { url, alt, imgId } );
 							} }
 							allowedTypes={ ALLOWED_MEDIA_TYPES }

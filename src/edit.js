@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import IconPlay from './slide/small-chunks/IconPlay';
 
 import { useRef, Fragment, useState, useEffect } from '@wordpress/element';
-// import { useSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 
 import {
 	useBlockProps,
@@ -16,7 +16,12 @@ const ALLOWED_BLOCKS = [ 'cobianzo/slide' ]; // [ 'core/image' ];
 
 export default function Edit( { attributes, ...pepe } ) {
 	const sliderRef = useRef(); // to call the button "+" (adds inner block) click event
-	console.log( 'Just testint,', pepe );
+	//console.log( 'Just testint,', pepe );
+
+	useSelect( ( select ) => {
+		console.log( 'TODELETE:: ', select( 'core' ) );
+	} );
+
 	const [ previewMode, setPreviewMode ] = useState( false );
 
 	// watch toggle previewMode slider group
