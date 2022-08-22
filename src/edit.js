@@ -18,9 +18,9 @@ export default function Edit( { attributes, ...pepe } ) {
 	const sliderRef = useRef(); // to call the button "+" (adds inner block) click event
 	//console.log( 'Just testint,', pepe );
 
-	useSelect( ( select ) => {
-		console.log( 'TODELETE:: ', select( 'core' ) );
-	} );
+	// useSelect( ( select ) => {
+	// 	console.log( 'TODELETE:: ', select( 'core' ) );
+	// } );
 
 	const [ previewMode, setPreviewMode ] = useState( false );
 
@@ -51,6 +51,14 @@ export default function Edit( { attributes, ...pepe } ) {
 			alert( 'no preview' );
 		}
 	}, [ previewMode ] );
+
+	useEffect( () => {
+		console.log(
+			'%cinner HAS IT BEEN RERENDERED?:: ',
+			'color:blue;font-size:2rem;',
+			attributes
+		);
+	}, [] );
 
 	return (
 		<Fragment>

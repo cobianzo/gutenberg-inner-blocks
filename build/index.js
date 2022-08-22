@@ -38,10 +38,10 @@ function Edit(_ref) {
   } = _ref;
   const sliderRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(); // to call the button "+" (adds inner block) click event
   //console.log( 'Just testint,', pepe );
+  // useSelect( ( select ) => {
+  // 	console.log( 'TODELETE:: ', select( 'core' ) );
+  // } );
 
-  (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
-    console.log('TODELETE:: ', select('core'));
-  });
   const [previewMode, setPreviewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // watch toggle previewMode slider group
 
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -61,6 +61,9 @@ function Edit(_ref) {
       alert('no preview');
     }
   }, [previewMode]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    console.log('%cinner HAS IT BEEN RERENDERED?:: ', 'color:blue;font-size:2rem;', attributes);
+  }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.BlockControls, {
     controls: [{
       icon: 'plus',
